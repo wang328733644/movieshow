@@ -1,0 +1,27 @@
+﻿git --version                            确认是否安装Git
+git clone 网址                            拷贝一个 Git 仓库到本地
+git init                                 用于创建Git仓 库并初始化仓库
+git branch                                查看分支
+git branch 名称                           建立分支
+git add .                                将该所有文件添加到缓存
+git status                               查看项目的当前状态
+git commit -m '项目的初始版本'            提交并写原因
+git push origin master                   往服务器上传代码
+git log                                  查看日志
+git remote add origin 网址                给远端仓库建立联系
+git pull 网址                             与服务器上代码同步
+git reset HEAD^                           回到上一版本
+git reset 版本号                          回到对应版本号的版本
+git rm 文件名                             删除文件 
+git check out 文件名                      重新拿出文件
+git checkout -b 名称                      创建分支并切换至该分支
+git commit -am ' '                        合并add和commit操作
+git checkout 名称                         切换至该名称的分支
+git merge 分支名称                        合并分支到主线
+git push origin --delete 分支名称         远程删除分支
+git tag -a v.1.0.0.0 -m ' 注解'           修改TAG
+git push origin v.1.0.0.0                 把版本号推上去
+git tag -d   v.1.0.0.0                    删除本地TAG
+git push origin  --delete tag v1.0.0.0    删除远程版本号
+git reset --hart + (commit id )           返回历史版本
+# ssh-keygen -t rsa -C 账号               在主目录创建钥匙
