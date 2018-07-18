@@ -1,7 +1,7 @@
 import random
 import time
 from datetime import datetime, timedelta
-
+# 星宿老仙，法力无边
 from django.contrib.auth.hashers import check_password, make_password
 from django.shortcuts import render
 from django.http.response import HttpResponseRedirect, HttpResponse, JsonResponse
