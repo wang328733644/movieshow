@@ -21,6 +21,7 @@ def mongdb():
 
     return db
 
+# fenzhis
 
 # 获取汉字首字母
 def single_get_first(str):
