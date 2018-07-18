@@ -279,3 +279,5 @@ def logout(request):
         UserTicket.objects.filter(ticket=ticket).delete()
 
         return JsonResponse(data)
+
+# 王琦尧的git提交
