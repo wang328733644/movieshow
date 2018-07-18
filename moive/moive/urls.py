@@ -13,6 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+
+# 仅以此剑，赐予你死亡
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import static
