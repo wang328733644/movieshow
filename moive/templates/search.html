@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>List</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="keywords" content=""/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+        setTimeout(hideURLbar, 0);
+    }, false);
+
+    function hideURLbar() {
+        window.scrollTo(0, 1);
+    } </script>
+    <!-- //for-mobile-apps -->
+    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" href="../static/css/faqstyle.css" type="text/css" media="all"/>
+    <link href="/static/css/medile.css" rel='stylesheet' type='text/css'/>
+    <link href="/static/css/single.css" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="/static/css/contactstyle.css" type="text/css" media="all"/>
+    <!-- news-css -->
+    <link rel="stylesheet" href="/static/news-css/news.css" type="text/css" media="all"/>
+    <!-- //news-css -->
+    <!-- list-css -->
+    <link rel="stylesheet" href="/static/list-css/list.css" type="text/css" media="all"/>
+    <!-- //list-css -->
+    <!-- font-awesome icons -->
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css"/>
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <script type="text/javascript" src="/static/js/jquery-2.1.4.min.js"></script>
+    <!-- //js -->
+    <!---<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>--->
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/static/js/move-top.js"></script>
+    <script type="text/javascript" src="/static/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1000);
+            });
+        });
+    </script>
+    <!-- start-smoth-scrolling -->
+    <!-- tables -->
+    <link rel="stylesheet" type="text/css" href="/static/list-css/table-style.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/list-css/basictable.css"/>
+    <script type="text/javascript" src="/static/list-js/jquery.basictable.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#table').basictable();
+
+            $('#table-breakpoint').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint1').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint2').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint3').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint4').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint5').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint6').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint7').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint8').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint9').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint10').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint11').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint12').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint13').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint14').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint15').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint16').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint17').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint18').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint19').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint20').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint21').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint22').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint23').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint24').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint25').basictable({
+                breakpoint: 768
+            });
+            $('#table-breakpoint26').basictable({
+                breakpoint: 768
+            });
+        });
+    </script>
+    <!-- //tables -->
+</head>
+
+<body>
+<!-- header -->
+<div class="header">
+    <div class="container">
+        <div class="w3layouts_logo">
+            <a href="index.html"><h1>One<span>Movies</span></h1></a>
+        </div>
+        <div class="w3_search">
+            <form action="/list/search/" method="post">
+                {% csrf_token %}
+                <input type="text" name="Search" placeholder="搜索" required="">
+                <input type="submit" value="确定">
+            </form>
+        </div>
+        <div class="w3l_sign_in_register">
+            <ul>
+                {% if user.id %}
+                    <li><i class="fa fa-phone" aria-hidden="true"></i>{{ user.tel }}</li>
+                    <li><a href="#" id="log1">{{ user.name }}</a></li>
+                    <li><a href="" id="log2" onclick="logout()">退出</a></li>
+                {% else %}
+                    <li><a href="#" data-toggle="modal" data-target="#myModal" id="log1">登录</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- //header -->
+<!-- bootstrap-pop-up -->
+<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                Sign In & Sign Up
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <section>
+                <div class="modal-body">
+                    <div class="w3_login_module">
+                        <div class="module form-module">
+                            <div class="toggle"><i class="fa fa-times fa-pencil"></i>
+                                <div class="tooltip">Click Me</div>
+                            </div>
+                            <div class="form form1">
+                                <h3>Login to your account</h3>
+                                <form action="/index/login/" method="post">
+                                    {% csrf_token %}
+                                    <input type="text" name="phone" id="Username" placeholder="用户" required="">
+                                    <input type="password" name="password" id="Password" placeholder="密码" required="">
+                                    <input type="submit" value="登录">
+                                </form>
+                            </div>
+                            <div class="form form2">
+                                <h3>Create an account</h3>
+                                <form action="" method="post">
+                                    {% csrf_token %}
+                                    <input type="text" name="Username" id="username" placeholder="用户" required="">
+                                    <input type="password" name="Password" id="password" placeholder="密码" required="">
+                                    <input type="email" name="Email" id="email" placeholder="邮箱" required="">
+                                    <input type="text" name="Phone" id="phone" placeholder="电话号码" required="">
+                                    <button type="submit">注册</button>
+                                </form>
+                            </div>
+                            <div class="cta"><a href="#">Forgot your password?</a></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script>
+    $('.toggle').click(function () {
+        // Switches the Icon
+        $(this).children('i').toggleClass('fa-pencil');
+        // Switches the forms
+        $('.form').animate({
+            height: "toggle",
+            'padding-top': 'toggle',
+            'padding-bottom': 'toggle',
+            opacity: "toggle"
+        }, "slow");
+    });
+</script>
+<!-- //bootstrap-pop-up -->
+<!-- nav -->
+<div class="movies_nav">
+    <div class="container">
+        <nav class="navbar navbar-default">
+            <div class="navbar-header navbar-left">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                <nav>
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/index/index/">首页</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">电影类型分类<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-column columns-3">
+                                <li>
+                                    <div class="col-sm-4">
+                                        <ul class="multi-column-dropdown">
+
+                                            {% for type in types %}
+                                                <li><a href="/index/classify/{{ type.id }}/">{{ type.type_name }}</a>
+                                                </li>
+                                            {% endfor %}
+
+                                        </ul>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li><a href="/news/movnews/">新闻</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">电影地区分类<b class="caret"></b></a>
+                            <ul class="dropdown-menu multi-column columns-3">
+                                <li>
+                                    {% for area in areas %}
+                                        {% if forloop.counter >= 0 and forloop.counter <= 13 %}
+                                            <div class="col-sm-4">
+                                                <ul class="multi-column-dropdown">
+                                                    <li><a href="/area/area/{{ area.id }}/">{{ area.area_name }}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+                                        {% if forloop.counter > 13 and forloop.counter <= 26 %}
+                                            <div class="col-sm-4">
+                                                <ul class="multi-column-dropdown">
+                                                    <li><a href="/area/area/{{ area.id }}/">{{ area.area_name }}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+                                        {% if forloop.counter > 26 %}
+                                            <div class="col-sm-4">
+                                                <ul class="multi-column-dropdown">
+                                                    <li><a href="/area/area/{{ area.id }}/">{{ area.area_name }}</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <div class="clearfix"></div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li><a href="/list/lista/{{ 0 }}/">A - z list</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- //nav -->
+<div class="general_social_icons">
+    <nav class="social">
+        <ul>
+            <li class="w3_twitter"><a href="#">Twitter <i class="fa fa-twitter"></i></a></li>
+            <li class="w3_facebook"><a href="#">Facebook <i class="fa fa-facebook"></i></a></li>
+            <li class="w3_dribbble"><a href="#">Dribbble <i class="fa fa-dribbble"></i></a></li>
+            <li class="w3_g_plus"><a href="#">Google+ <i class="fa fa-google-plus"></i></a></li>
+        </ul>
+    </nav>
+</div>
+<!-- faq-banner -->
+<div class="faq">
+    <h4 class="latest-text w3_faq_latest_text w3_latest_text">Movies Search</h4>
+    <div class="container">
+        <div class="agileits-news-top">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Search</li>
+            </ol>
+        </div>
+        <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+            <div id="myTabContent" class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                    <div class="agile-news-table">
+                        {% if num %}
+                            <div class="w3ls-news-result">
+                                <h4><span>共找到结果 : </span>{{ num }} <span>条</span></h4>
+                            </div>
+                            <table id="table-breakpoint">
+                                <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Movie Name</th>
+                                    <th>Year</th>
+                                    <th>Status</th>
+                                    <th>Country</th>
+                                    <th>Genre</th>
+                                    <th>Rating</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for foo in all_movie %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td class="w3-list-img"><a href="/single/single/{{ foo.id }}/"><img src="{{ foo.img }}" alt=""/> <span>{{ foo.name }}</span></a>
+                                        </td>
+                                        <td>{{ foo.year }}</td>
+                                        <td>SD</td>
+                                        <td class="w3-list-info"><a href="genres.html">{{ foo.area }}</a></td>
+                                        <td class="w3-list-info"><a href="area.html">{{ foo.type.type_name }}</a></td>
+                                        <td>{{ foo.score }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+                            <h4>不好意思，没找到您要的电影</h4>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //faq-banner -->
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="w3ls_footer_grid">
+            <div class="col-md-6 w3ls_footer_grid_left">
+                <div class="w3ls_footer_grid_left1">
+                    <h2>Subscribe to us</h2>
+                    <div class="w3ls_footer_grid_left1_pos">
+                        <form action="#" method="post">
+                            <input type="email" name="email" placeholder="Your email..." required="">
+                            <input type="submit" value="Send">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 w3ls_footer_grid_right">
+                <a href="index.html"><h2>One<span>Movies</span></h2></a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-5 w3ls_footer_grid1_left">
+            <p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank"
+                                                                         href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+            </p>
+        </div>
+        <div class="col-md-7 w3ls_footer_grid1_right">
+            <ul>
+                <li>
+                    <a href="/index/index/">首页</a>
+                </li>
+                <li>
+                    <a href="/index/classify/1/">动作片</a>
+                </li>
+                <li>
+                    <a href="/index/classify/6/">爱情片</a>
+                </li>
+                <li>
+                    <a href="/index/classify/4/">悬疑片</a>
+                </li>
+                <li>
+                    <a href="/index/classify/5/">恐怖片</a>
+                </li>
+                <li>
+                    <a href="/index/classify/8/">科幻片</a>
+                </li>
+                <li>
+                    <a href="/index/contact/">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- //footer -->
+<!-- Bootstrap Core JavaScript -->
+<script src="../static/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $(".dropdown").hover(
+            function () {
+                $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                $(this).toggleClass('open');
+            },
+            function () {
+                $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                $(this).toggleClass('open');
+            }
+        );
+    });
+</script>
+<!-- //Bootstrap Core JavaScript -->
+<!-- here stars scrolling icon -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        /*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+        $().UItoTop({easingType: 'easeOutQuart'});
+        $.ajaxSetup({
+            data: {csrfmiddlewaretoken: '{{ csrf_token }}'}
+        });
+    });
+</script>
+<script src="/static/js/register.js"></script>
+<script src="/static/js/logout.js"></script>
+<!-- //here ends scrolling icon -->
+</body>
+</html>

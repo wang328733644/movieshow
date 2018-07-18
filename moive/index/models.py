@@ -11,9 +11,9 @@ from django.db import models
 
 
 class Comments(models.Model):
-    id = models.ForeignKey('User', models.DO_NOTHING, db_column='id', primary_key=True)
-    mov = models.ForeignKey('Movie', models.DO_NOTHING, blank=True, null=True)
-    content = models.TextField()
+    user = models.ForeignKey('User', models.DO_NOTHING)
+    mov = models.ForeignKey('Movie', models.DO_NOTHING)
+    content = models.CharField(max_length=10000)
 
     class Meta:
         managed = False
@@ -21,6 +21,7 @@ class Comments(models.Model):
 
 
 class Event(models.Model):
+    movie = models.ForeignKey('Movie', models.DO_NOTHING)
     click_counts = models.BigIntegerField()
 
     class Meta:
@@ -29,15 +30,16 @@ class Event(models.Model):
 
 
 class Movie(models.Model):
-    id = models.ForeignKey(Event, models.DO_NOTHING, db_column='id', primary_key=True)
-    name = models.CharField(max_length=64)
-    img = models.CharField(max_length=128)
-    des = models.CharField(max_length=256)
-    area = models.CharField(max_length=128)
-    actors = models.CharField(max_length=128)
+    name = models.CharField(max_length=128)
+    img = models.CharField(max_length=256)
+    des = models.CharField(max_length=10000)
+    area = models.ForeignKey('MovieAreas', models.DO_NOTHING)
+    actors = models.CharField(max_length=1024)
     year = models.CharField(max_length=16)
-    score = models.FloatField()
-    status = models.IntegerField()
+    type = models.ForeignKey('MovieTypes', models.DO_NOTHING)
+    score = models.CharField(max_length=64)
+    status = models.IntegerField(blank=True, null=True)
+    letter = models.CharField(max_length=4)
     url = models.CharField(max_length=256)
 
     class Meta:
@@ -45,14 +47,12 @@ class Movie(models.Model):
         db_table = 'movie'
 
 
-class MovieTypename(models.Model):
-    movie = models.ForeignKey('MovieTypes', models.DO_NOTHING, primary_key=True)
-    id = models.ForeignKey(Movie, models.DO_NOTHING, db_column='id')
+class MovieAreas(models.Model):
+    area_name = models.CharField(max_length=64, blank=True, null=True)
 
     class Meta:
         managed = False
-        db_table = 'movie_typename'
-        unique_together = (('movie', 'id'),)
+        db_table = 'movie_areas'
 
 
 class MovieTypes(models.Model):
@@ -65,13 +65,25 @@ class MovieTypes(models.Model):
 
 class Nav(models.Model):
     huge_pic = models.CharField(max_length=128)
-    small_pic = models.CharField(max_length=128)
     movie_name = models.CharField(max_length=10, blank=True, null=True)
     movie_desc = models.CharField(max_length=64, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'nav'
+
+
+class News(models.Model):
+    img = models.CharField(max_length=256)
+    title = models.CharField(max_length=512)
+    short_content = models.CharField(max_length=10000)
+    long_content = models.TextField()
+    time = models.CharField(max_length=128)
+    view = models.IntegerField()
+
+    class Meta:
+        managed = False
+        db_table = 'news'
 
 
 class Permission(models.Model):
@@ -83,11 +95,22 @@ class Permission(models.Model):
         db_table = 'permission'
 
 
+class SuperUser(models.Model):
+    name = models.CharField(max_length=64)
+    password = models.CharField(max_length=64)
+    tel = models.CharField(unique=True, max_length=16)
+    email = models.CharField(max_length=64)
+
+    class Meta:
+        managed = False
+        db_table = 'super_user'
+
+
 class User(models.Model):
     name = models.CharField(max_length=64)
     password = models.CharField(max_length=256)
-    tel = models.CharField(max_length=11)
-    user_formail = models.CharField(max_length=256)
+    tel = models.CharField(unique=True, max_length=11)
+    email = models.CharField(max_length=256)
 
     class Meta:
         managed = False
@@ -101,3 +124,13 @@ class UserStatus(models.Model):
     class Meta:
         managed = False
         db_table = 'user_status'
+
+
+class UserTicket(models.Model):
+    user = models.ForeignKey(User, models.DO_NOTHING)
+    ticket = models.CharField(max_length=64)
+    out_time = models.DateTimeField()
+
+    class Meta:
+        managed = False
+        db_table = 'user_ticket'

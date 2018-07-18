@@ -13,13 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url,include
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import static
 
 from moive import settings
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^index/', include('index.urls', namespace='movie')),
+    url(r'^list/', include('list.urls')),
+    url(r'^index/', include('genres.urls')),
+    url(r'^single/', include('single.urls')),
+    url(r'^area/', include('area.urls')),
+    url(r'^news/', include('news.urls'))
 ]
 
-urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
